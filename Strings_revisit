@@ -1,0 +1,43 @@
+Stores memory in String Pool 
+String a1 = "rokith";
+String a2 = "rokith";
+System.out.print(a1==a2); // it will check the content of a1 and a2 instead it checks the refeence address of the varible //hence both a1 and a2 denotes the same address it will return true
+
+=============================================================================================================================================================
+Stores in the Heap Area, Whenever u create a object it will create a new memory space  in Heap area 
+String a = new String("rokith"); // abc -> diff reference address 
+String b = new String("rokith"); // xyz ->  diff reference address
+
+System.out.print(a==b); -> abc==xyz -> since the reference of a and b are different it will not return true 
+
+while comparing two String if u use == it will not chck the content unless it will check the refrence variable 
+
+to check the content of two strings use .equalsto 
+
+System.out.print(a.equalsto(b));
+====================================================================================================================================
+public class string_compare {
+    public static void main(String[] args) {
+        String name = "rokith";
+        String name1 =  new String("rokith");
+
+        System.out.print(name.equals(name1));  //true
+        System.out.println(name==name1); //false 
+
+    }
+
+======================================================================================================================
+ Yes, memory allocation will be different:
+
+String RCB = sc.nextLine();
+
+Stored in Heap (String Pool or Heap Non-Pool) based on input.
+Created at runtime, not a compile-time constant.
+String team = "Win";
+
+Stored in String Pool (Method Area).
+Compile-time constant, reused if referenced elsewhere.
+🔹 RCB → Heap (dynamic allocation)
+🔹 team → String Pool (constant pool)
+
+==============================================================================================
