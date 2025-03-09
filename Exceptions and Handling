@@ -1,0 +1,71 @@
+Exceptions
+
+1.Arithmetic Exceptions
+
+try {
+    int result = a / b;
+    System.out.print(result);
+} catch (Exception e) {
+    System.err.println("can't divide by Zero");
+}
+1️⃣ try Block:
+This is the section where the code is executed normally.
+The statement int result = a / b; attempts to divide a by b.
+If b == 0, Java throws an ArithmeticException (/ by zero error).
+2️⃣ catch (Exception e) Block:
+If an exception occurs, the program jumps to this catch block.
+The exception is caught and handled instead of crashing the program.
+System.err.println("can't divide by Zero"); prints an error message to inform the user.
+================================================================================================================================================================
+2.ArrayindexOutofBound Exception 
+
+Understanding ArrayIndexOutOfBoundsException in Java
+The ArrayIndexOutOfBoundsException occurs when you try to access an array element beyond its valid index range.
+
+Java arrays are zero-indexed, meaning the valid indices for an array of size n are from 0 to n-1.
+Trying to access an index less than 0 or greater than or equal to the array size results in this exception.
+
+=====================================================================================================================================================================
+3.NoSuchElementException
+
+Occurs when: Selenium cannot find an element using the specified locator
+
+WebElement element = driver.findElement(By.id("nonExistentID")); // Throws NoSuchElementException
+
+Fix: Ensure the locator is correct and the element is present before accessing it.
+
+==================================================================================================================================================================
+NoSuchWindowException
+Occurs when: Trying to switch to a window that doesn’t exist.
+
+Fix: Get all available window handles before switching.
+
+===========================================================================================================================================================
+NoSuchFrameException
+Occurs when: Trying to switch to a frame that doesn’t exist.
+
+Fix: Use driver.getPageSource() to check if the frame exists.
+==========================================================================================================================================================
+StaleElementReferenceException
+Occurs when: The element was found earlier but is no longer attached to the DOM.
+WebElement element = driver.findElement(By.id("someID"));
+driver.navigate().refresh(); // Page refreshes
+element.click(); // Throws StaleElementReferenceException
+Fix: Re-locate the element after the page reloads.
+=======================================================================================================================================
+TimeoutException
+Occurs when: An explicit wait fails to locate an element within the given time.
+WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
+wait.until(ExpectedConditions.elementToBeClickable(By.id("slowButton"))); // Throws TimeoutException
+Fix: Increase wait time or check element presence before interacting.
+==========================================================================================================================================
+
+Exception Handling  
+Selenium exceptions can be avoided by using explicit waits, proper element handling, and updated WebDriver versions. Always log exceptions and use try-catch blocks where necessary to handle them gracefully.
+
+Best Practices to Avoid Exceptions
+✔ Use Explicit Waits (WebDriverWait)
+✔ Validate Elements Before Accessing
+✔ Check if Windows, Frames, and Alerts Exist Before Switching
+✔ Use Try-Catch Blocks for Exception Handling
+✔ Re-locate Elements After Refresh to Avoid StaleElementReferenceExceptio
