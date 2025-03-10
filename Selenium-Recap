@@ -1,0 +1,97 @@
+1.Latest Selenium Version and Features
+
+Latest version is 4.25.0 and chrome Devtools supports are available v129
+previous Version is 4.24.0 ->
+
+2. How do u launch browser in a particular dimension /whats the use of chromeOption?
+we can use ChromeOptions Class to customize and configure chromeDriver session 
+ChromeOptions helps us to perform various operations like opening chrome in headless browser,set browser Size
+
+ChromeOptions opts = new ChromeOptions();
+opts.addArguments("starts maximized");
+opts.addArguments("window position= 1920,1080")
+
+3.DesiredCapabalities
+
+it is used to set the browser properties which include browser name , settings,version and platform
+Syntax 
+DesiredCapabalities obj = new DesiredCapabalities.chrome();
+obj.setBrowsername("chrome")
+
+4. Why Webdriver called as interface /what interface u are aware of ?
+its a public interface beacuse it defines a set of methods 
+WebDriver is an interface because it provides a blueprint for browser automation, allowing multiple browser drivers to implement its methods independently
+
+✅ Defines a contract – It provides method names (get(), click(), findElement()), but doesn't implement them.
+✅ Multiple browser support – Chrome, Firefox, Edge, etc., implement WebDriver in their own way.
+✅ Flexibility & Polymorphism – We can use WebDriver driver = new ChromeDriver(); to switch browsers easily.
+
+5. Methods webdriver interface provides?
+.get .close .getWindowhandles .getTitle
+
+6. How will u verify whether webpage has 404 or not ?
+
+By Using getpageSource() we can verify the page launches correctly , Also we can use Assert 
+Assert.assertTrue(driver.getPageSource().contains("404"));
+
+7.where will u use FIndElements 
+FindElements -> Returns a list of WebElements on webpage 
+to verify the Broken Links we can use FindElements 
+
+8. how does my Selenium test scripts interacts with Browser ?
+By Using JSON Wire protocol my Selenium Test Scripts get communicated with Browser Drivers through real Browser Using HTTP Methods 
+JSON Wire protocol is a RestFUl WebServices using JSON or HTTP 
+
+9. Purpose of Waits in Selenium ?
+SOmtimes a certain webelemt takes longer time to appear in that case our test might throw a NoSUCHException , TO Avoid that we use WAITS 
+TYPES OF WAITS 
+
+Implicit wait - > its a global Wait used in the Automation Framework which is used to set the  default wait time globally throughout the program which applies for all the webelements 
+explicit wait -> Used to wait for particular instances only like -> waiting for visibility of web element, wait till an alert comes 
+Fluent wait ->   its same as explicit wait but it comes with Polling time / interval time 
+
+10. Asserts in Selenium ?
+Its used to validate the actual and expected resus are same or not 
+Syntax 
+
+Assert.assertEquals(ExpectedText,webelement.getText());
+
+11. Whats the Design pattern for your test scripting 
+
+POM is a design pattern that helps creaate a object Repo for the Web Elements 
+POM improves COde reusability and readability 
+Page Object Model (POM) is a design pattern used in Selenium automation to enhance code maintainability, reusability, and readability. It represents each web page as a separate class with locators and methods that interact with elements on that page.
+
+13.How do you  scroll down to particular web element
+
+we can use Javascript executor and Actions class 
+JavascriptExecutor js = (JavascriptExecutor) driver;
+WebElement element = driver.findElement(By.xpath("//button[text()='Submit']"));
+js.executeScript("arguments[0].scrollIntoView(true);", element);
+
+WebElement element = driver.findElement(By.id("targetElement"));
+Actions actions = new Actions(driver);
+actions.moveToElement(element).perform();
+
+14. How to Enter Text Without sendKeys() in Selenium?
+
+JavascriptExecutor js = (JavascriptExecutor) driver;
+WebElement inputField = driver.findElement(By.id("username"));
+js.executeScript("arguments[0].value='testuser';", inputField);
+
+15.How to mouseHover a Element 
+
+WebElement element = driver.findElement(By.xpath());
+Actions action = new Actions(driver);
+action.movetoelement(element).perform();
+
+16.How to perfrom RightClick 
+Actions action = new Actions(driver);
+action.movetoelement(element).perform();
+action.contextclick.perfrom();
+
+17. how to extract Tooltip Value method
+First of all inspect the element which provide tooltip, in title attribute only the value might be there , so we are getting the attribute by using getAttribute of that element which prints the tooltip value 
+String tooltip = driver.FindElement(By.xpath().getAttribute("title"));
+System.out.print(tooltip);
+
