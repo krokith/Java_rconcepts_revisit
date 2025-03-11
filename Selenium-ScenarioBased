@@ -1,0 +1,183 @@
+SSelenium Scenario Based Questions 
+1. in ur project there can be 1000 Testcases, How do u choose Automation testcases ?
+ Intially we autmate critical priority testcases p0 and make sure buisness critical functionalities are automated 
+then we go for major Functionalities and automate those 
+then FInally we choose UI Autoation 
+
+Critical order -> critical High  Medium and Low 
+
+2.   whats is your responbilities as Automation ENgineer ? 
+
+Perfroming Frontend and Backend Automation for in Sprint user stories, existing regression testing 
+Peer code review
+Enhancing the tesing Framework 
+we have integrated the Automation Framework with CI/CD pipelines so for every 24 hrs then Build runs automatically we check logs regualrly to ensure there are no errors
+and i used to lead 3 members of team and helped them achieve their goals
+
+3.Test process I follow 
+
+we work in agile methodologies so twe ahve 2 to 3 week sprint
+we automate in sprint and automate the user stories fro backlogs 
+Before that we make sure the manual flows works as expected 
+once the automation script is done we create a new branch and push the code for review 
+Once the code review is successfull we create pull rquest and merge the changes to master 
+
+4. Best pratices we follow while Using selenium / how do u d Code Optimization 
+
+Maintain coding standards
+code documentation
+Follow design pricinciples like OOPs
+Remove sleep commands 
+Avoid code dulpication
+ignore using implicit wait 
+
+
+5. How do you choose Automation Framework ? there are different frameworks 
+
+First we undestand the projecr requirements and we analyse the data they provide post that 
+if they provide large amount of test data maintenance we would choose data driven Framweork 
+in that we will import the datas into the framwework by Using apache POI and we test data 
+or else if there is a buisness cum Technicl team collarbation means we would choose BDD frameworks 
+
+6. Parallel execution 
+
+First of all parallel execution can be done in Selenium grid and TestNG
+
+Parallel execution in TestNG allows running multiple tests simultaneously, reducing execution time. It can be achieved using the TestNG XML configuration and DataProviders with parallel attributes.
+ Best practice: Use parallel="methods" or parallel="classes" in testng.xml for faster execution. Combine with Selenium Grid for cross-browser testing!
+
+7. WHy are we Using TestNG librariies ?
+TestNG anoonations  will help u organize ur test cases and make more readable 
+Helps in grouping and priotizing tests
+SUppport parallel testing 
+
+8. how will u achieve cross browser testing in Selenium ?
+
+By importing TestNG libraries with our framework and Using paramteter annotaions we can pass the browser values to the test
+
+
+=================================================================================================================================================================================================================================================
+
+AUTOMATION FRAMEWORK BASED QUESTION
+
+1.What type of Framework u worked on and explain the components in ur Framework 
+
+I have worked with Datadriven and BDD frameworks
+i would the POM strcutrure design pattern for test scripting 
+and for test data maintenance i ll import db FIles such as Excel,JSON by using apache POI and work on a Data driven Framework 
+For test Reporting i ll choose TestNG report generates
+for readability,separating test i ll choose testNG annotaions 
+FOR VCS i ll use Git
+For CI/CD i have integrated jenkins
+
+2.how will u manage selenim mvn related dependices 
+we added all the project related dependicies plugins in POm.xml
+when we run the mvn project these will be automatically called
+
+3. Why Webdrver is a Interface ?
+WebDriver provides a common interface for different browser drivers (Chrome, Firefox, Edge, etc.).
+This allows switching browsers easily without changing test scripts.
+
+🔥 Why is WebDriver an Interface in Selenium?
+✔ Flexibility → Supports multiple browser drivers (ChromeDriver, FirefoxDriver).
+✔ Polymorphism → Single reference (WebDriver driver) can hold different implementations.
+✔ Loose Coupling → Browser implementation changes don’t affect the test script.
+
+
+4. Interfaces available in my Framwework 
+JavascriptExecutor
+TakesScreenshot
+Webdriver
+Action
+Logs
+
+5.  Let's say in my Framework there are more than 1,000 test cases. But I want to only exaexecute  the login and Dashboard related testcases . So how does that result?will u do that 
+
+If your Selenium Automation Framework has 1,000+ test cases but you only want to execute Login and Dashboard-related test cases, you can achieve this using TestNG Groups, XML file filtering, or annotations.
+
+for eg 
+public class LoginTests {
+    @Test(groups = "Login")
+    public void loginWithValidCredentials() {
+        System.out.println("Login successful!");
+    }
+
+    @Test(groups = "Login")
+    public void loginWithInvalidCredentials() {
+        System.out.println("Login failed!");
+    }
+}
+
+public class DashboardTests {
+    @Test(groups = "Dashboard")
+    public void verifyDashboardElements() {
+        System.out.println("Dashboard loaded successfully!");
+    }
+}
+
+
+6. WIthout using sendkeys how to type in textbox ?
+
+
+        // Use JavaScript to type
+        JavascriptExecutor js = (JavascriptExecutor) driver;
+        js.executeScript("arguments[0].value='Selenium WebDriver';", searchBox);
+
+7. what are the SOftwares Required to perfrom Automation Testing ?
+
+Step1 : Install Java in our machine and configure the javapath in our system -> so selenium recogines the java installed path 
+Step2 : Install a IDE for coding : Eclipse IDE, IntelliJ 
+Step3 : Install a Build Tool -> Maven
+Step4 : in POM.xml configure the Selenium and TestNG jars and import the RestAssured libraries 
+Step5 : Configure the Git 
+Stpe 6 : create a CI/CD pipelines through Jenkins 
+
+8. How will u automate Dropdowns ?
+By Using Select class 
+electByValue 
+SelectByindex
+SelectByVisibleText
+
+9.  Whats the use of TestNG.xml ?
+To run multiple test cases in a Single Execution we use testng.xml 
+it helps to include the Test groups 
+and parallel executio 
+
+10. whats the use od @dataprovidr annotation?
+📌 Purpose: Supplies multiple test data sets to a test method for parameterized testing.
+
+@DataProvider(name = "loginData")
+public Object[][] getData() {
+    return new Object[][] { {"user1", "pass1"}, {"user2", "pass2"} };
+}
+
+@Test(dataProvider = "loginData")
+public void testLogin(String user, String pass) {
+    System.out.println("Testing login: " + user + " | " + pass);
+}
+
+11. Paramterization explained 
+
+in a Selenium script instead of Hardcording in @test we can use paramteers  in test script 
+create TestNG.xml File -> open it and <paramter name ="URL" value ="https://google.com"/>
+
+instead of Hardcording, use @paramters({URL})
+
+public void getTest(String appURL)
+driver.get(URL);
+
+================================================
+12. @dataprovider 
+
+@Test (dataProvider="dataSupplier")  // here we are giving the name of @dataprovider to the @Test
+Run | Debug
+public void sampleLoginTest (String username, String password) {
+System.out.println("Logged in using "+username+" and "+password);
+}
+@DataProvider (name="dataSupplier")
+public Object [] [] supplyDataMethod () {
+Object[][] data = {{ "arun", "123"}, {"varun", "456"},{"tharun", "789"}};
+return data;
+}
+
+
