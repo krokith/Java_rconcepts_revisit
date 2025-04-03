@@ -1,0 +1,31 @@
+Threads 
+
+A thread in Java is a lightweight subprocess that allows concurrent execution. In software testing, threads help run multiple test cases or tasks simultaneously to improve efficiency and simulate real-world scenarios.
+
+class TestThread extends Thread {
+    public void run() {
+        System.out.println("Executing test case in thread: " + Thread.currentThread().getName());
+    }
+    
+    public static void main(String[] args) {
+        TestThread t1 = new TestThread();
+        TestThread t2 = new TestThread();
+        t1.start();  // Runs in parallel
+        t2.start();
+    }
+}
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Multithreading in Java allows concurrent execution of multiple threads, improving test efficiency, especially in performance testing, parallel test execution, and simulating real-world scenarios.
+
+Key Use Cases in Testing:
+Parallel Test Execution – Run multiple test cases simultaneously using frameworks like TestNG (parallel="methods") or JUnit with Executors.
+
+Load & Performance Testing – Simulate multiple users accessing an application concurrently (e.g., using Java Threads with JMeter or Gatling).
+
+Asynchronous UI Testing – Handle background tasks in Selenium/WebDriver for responsive UI validation.
+
+Database & API Testing – Send multiple API calls in parallel to check concurrency handling.
+
+Deadlock & Race Condition Testing – Identify synchronization issues using synchronized, Lock, or ExecutorService.
